@@ -20,9 +20,12 @@ config({ path: `${__dirname}/.env` }); // Explicitly point to server/.env
 connectDb()
 const app=express()
 app.use(cors({
-    origin:"https://employee-ms-frontend-5q24.vercel.app",
-    credentials:true
-}))
+  origin: ["https://employee-ms-frontend-5q24.vercel.app", "http://localhost:5173"], // allow frontend prod + dev
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
+
 app.use(express.json())
 // app.use('/public', express.static('public'));
 app.use('/public', express.static(path.join(__dirname, 'public')));
