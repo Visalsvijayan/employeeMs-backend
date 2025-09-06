@@ -19,12 +19,16 @@ config({ path: `${__dirname}/.env` }); // Explicitly point to server/.env
 
 connectDb()
 const app=express()
+// Must come before routes
 app.use(cors({
-  origin: ["https://employee-ms-frontend-5q24.vercel.app", "http://localhost:5173"], // allow frontend prod + dev
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  origin: ["https://employee-ms-frontend-5q24.vercel.app", "http://localhost:5173"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+
+// Handle preflight requests explicitly
+app.options("*", cors());
 
 app.use(express.json())
 // app.use('/public', express.static('public'));
