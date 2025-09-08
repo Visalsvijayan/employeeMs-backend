@@ -45,6 +45,8 @@ app.use('/api/dashboard',dashboardRouter)
 app.use(errorHandler);
 
 
-app.listen(process.env.PORT,()=>{
-    console.log(`server is running on ${process.env.PORT}`)
-})
+// app.listen(process.env.PORT,()=>{
+//     console.log(`server is running on ${process.env.PORT}`)
+// })
+
+export default app
