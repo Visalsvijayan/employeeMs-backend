@@ -48,5 +48,8 @@ app.use(errorHandler);
 // app.listen(process.env.PORT,()=>{
 //     console.log(`server is running on ${process.env.PORT}`)
 // })
+app.get("/api/test", (req, res) => {
+  res.json({ message: "Backend working!" });
+});
 
 export default app
